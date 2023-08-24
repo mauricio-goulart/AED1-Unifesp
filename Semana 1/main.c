@@ -1,24 +1,40 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-
+void Imprimir_menu()
+{
+    printf("------String------\n");
+    printf("Digite alguma coisa: ");
+}
 
 
 int main()
 {
-    char palavra[10];
+    char palavra[256];
+    int alfabeto[26] = {0};
 
-    printf("Digite uma palavra: ");
+    Imprimir_menu();
     fgets(palavra, sizeof(palavra), stdin);
-    
-    palavra[strlen(palavra)] = '\0';
 
-    printf("%s ", palavra);
-
+    for (int c = 0; palavra[c] != '\0'; c++)
+    {
+        if (isalpha(palavra[c]))
+        {
+            alfabeto[tolower(palavra[c]) - 'a']++; 
+        }
+        
+    }
 
     for (int c = 0; c < 26; c++)
     {
-        printf("%c: " , 'a' + c);
+        if (alfabeto[c] > 0)
+        {
+            printf("%c: %i \n", 'a' + c, alfabeto[c]);
+        }
+        
     }
     
 }
+
+    
