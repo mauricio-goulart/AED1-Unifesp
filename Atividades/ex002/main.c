@@ -67,15 +67,56 @@ int main()
     //validar a ultrapassagem
 
 
+    if (ultrapassagem >= 1 && ultrapassagem <= n)
+    {
+        int p = -1;
+        int p2 = -1;
 
+        for (int c = 0; c < n; c++)
+        {
+            if (corredores[c].num == ultrapassagem)
+            {
+                p = c;
+            }
 
+            if (corredores[c].num == ordem[c])
+            {
+                p2 = c;
+            }
+            
 
+            
+        }
 
+        if (p != -1 && p2 != -1)
+        {
+            int troc = ordem[p];
+            ordem[p] = ordem[p2];
+            ordem[p2] = troc;
+        }
+        
+        
+    }
 
-
+    for (int c = 0; c < 3 && c < n; c++)
+    {
+        for (int l = 0; l < n; l++)
+        {
+            if (corredores[l].num == ordem[c])
+            {
+                printf("%d %s\n", corredores[l].num, corredores[l].nome);
+                break;
+            }
+            
+        }
+        
+    }
+    
+    
     
 
     free(corredores);
+    free(ordem);
     
 
 
