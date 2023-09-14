@@ -1,114 +1,68 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
+#include <string.h>
 
+typedef struct {
+    int carro;
+    char nome[21];
+} Corredor;
 
-//Struct dos corredores
+int encontrarPosicao(int *ordem_largada, int N, int carro) {
+    for (int i = 0; i < N; i++) {
+        if (ordem_largada[i] == carro) {
+            return i;
+        }
+    }
+    return -1; 
+}
 
-typedef struct
-{
-    int num;
-    char nome[20];
-}corredor;
+int frente(int *ordem_largada, int N, int carro) {
+    int posicao = encontrarPosicao(ordem_largada, N, carro);
+    if (posicao > 0) {
+        return ordem_largada[posicao - 1];
+    }
+    return -1; 
+}
 
+int main() {
+    int N;
+    scanf("%d", &N);
 
-int main()
-{
-    int n;
-    scanf("%d", &n);
+    Corredor *corredores = (Corredor *)malloc(N * sizeof(Corredor));
 
-    
-    corredor *corredores = malloc(n * sizeof(corredor));
-
-    while (n < 3 || n > 1000)
-    {
-        scanf("%d", &n);
+    for (int i = 0; i < N; i++) {
+        scanf("%d %s", &corredores[i].carro, corredores[i].nome);
     }
 
-
-    for (int c = 0; c < n; c++)
-    {
-        scanf("%s %d",corredores[c].nome, &corredores[c].num);
+    int *ordem_largada = (int *)malloc(N * sizeof(int));
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &ordem_largada[i]);
     }
-
-
-
-    int *ordem = (int *)malloc(n * sizeof(int));
-
-
-    for (int c = 0; c < n; c++)
-    {
-        scanf("%d", &ordem[c]);
-    }
-
 
     int ultrapassagem;
-
-    while (1)
-    {
-        scanf("%d" , &ultrapassagem);
-
-        if (ultrapassagem == -1)
-        {
+    while (1) {
+        scanf("%d", &ultrapassagem);
+        if (ultrapassagem == -1) {
             break;
         }
-        
-    }
-    
 
+        int p1 = encontrarPosicao(ordem_largada, N, ultrapassagem);
+        int num = frente(ordem_largada, N, ultrapassagem);
+        int p2 = encontrarPosicao(ordem_largada, N, num);
 
-
-    if (ultrapassagem >= 1 && ultrapassagem <= n)
-    {
-        int p = -1;
-        int p2 = -1;
-
-        for (int c = 0; c < n; c++)
-        {
-            if (corredores[c].num == ultrapassagem)
-            {
-                p = c;
-            }
-
-            if (corredores[c].num == ordem[c])
-            {
-                p2 = c;
-            }
-            
-
-            
+        if (p1 >= 0 && p2 >= 0) {
+            int temp = ordem_largada[p1];
+            ordem_largada[p1] = ordem_largada[p2];
+            ordem_largada[p2] = temp;
         }
-
-        if (p != -1 && p2 != -1)
-        {
-            int troc = ordem[p];
-            ordem[p] = ordem[p2];
-            ordem[p2] = troc;
-        }
-        
-        
     }
 
-    for (int c = 0; c < 3 && c < n; c++)
-    {
-        for (int l = 0; l < n; l++)
-        {
-            if (corredores[l].num == ordem[c])
-            {
-                printf("%d %s\n", corredores[l].num, corredores[l].nome);
-                break;
-            }
-            
-        }
-        
+    for (int i = 0; i < 3; i++) {
+        printf("%d %s\n", corredores[ordem_largada[i] - 1].carro, corredores[ordem_largada[i] - 1].nome);
     }
-    
-    
-    
 
     free(corredores);
-    free(ordem);
-    
+    free(ordem_largada);
 
-
-
+    return 0;
 }
