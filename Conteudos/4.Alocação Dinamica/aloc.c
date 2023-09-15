@@ -19,9 +19,9 @@ int main()
     puts("\n");
     
 
-    //alocação vetor dinamica(memoria heap)
+    //alocação vetor dinamica com malloc (memoria heap)
 
-    int *v_heap = (int *)malloc(5 * sizeof(int)); //inicia os elementos com lixo de memoria
+    int *v_heap = (int *)malloc(5 * sizeof(int)); //inicia os elementos com lixo de memoria.
 
     puts("Vetor Dinamico: \n");
 
@@ -34,10 +34,26 @@ int main()
     
 
 
+    //alocação vetor dinamica com calloc, garante que todos itens do vetor tenha o valor 0. (memoria heap)
+
+    int *v_cal = (int *)malloc(5 * sizeof(int)); //inicia os elementos com lixo de memoria
+
+    puts("\nVetor Dinamico calloc: \n");
+
+    printf("&v_call = [%p] | v_call = [%p]\n", &v_cal, v_cal);
+
+    for (int c = 0; c < 5; c++)
+    {
+        printf("&v_call[%d] = [%p] | v_call[%d] = [%d]\n", c, &v_cal[c], c, v_cal[c]);
+    }
+    
 
 
 
-    return 0;
+    free(v_heap);
+    free(v_cal);
+
+    return 0 ;
 
 
     
