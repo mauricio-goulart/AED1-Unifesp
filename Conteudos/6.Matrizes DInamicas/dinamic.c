@@ -30,6 +30,14 @@ int main()
         
     }
     
+    for (int c = 0; c < 2; c++)
+    {
+        free(m[c]);
+    }
+
+    free(m);
+
+    m = NULL;
     
 
 
