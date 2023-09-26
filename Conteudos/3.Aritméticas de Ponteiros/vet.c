@@ -1,5 +1,10 @@
 #include <stdio.h>
+/*
+    Usando aritmetica de ponteiros.
 
+    &v = v = v[0]
+    v[1] = *(v + 1)
+*/
 int main()
 {
     int v[5] = {1, 2, 3, 4, 5};
