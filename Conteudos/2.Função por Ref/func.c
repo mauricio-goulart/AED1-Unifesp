@@ -1,5 +1,9 @@
 #include <stdio.h>
+/*
+    Passagem por referencia na função.
 
+    Na função eu estou alterando algo que está na main
+*/
 
 void cont(int a, int b, int *soma, int *sub)
 {
