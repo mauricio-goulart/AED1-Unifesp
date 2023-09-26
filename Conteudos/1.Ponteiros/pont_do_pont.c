@@ -1,5 +1,11 @@
 #include <stdio.h>
+/*
+    Mostrando o endereço dos ponteiros, o endereço que eles guardam, e o conteudo.
 
+      p2 = mostra o endereço que ele está guardando que no caso é o endereço de um ponteiro     
+     *p2 = mostra o conteúdo que ele guarda que no caso é um endereço
+    **p2 = mostra conteúdo do endereço que ele está guardando
+*/
 int main()
 {
     int a = 10;
