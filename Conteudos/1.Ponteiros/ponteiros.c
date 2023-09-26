@@ -1,10 +1,10 @@
 #include <stdio.h>
 /*
     Mostrando o endereço dos ponteiros, qual endereço eles armazenam, e qual o conteudo deles.
-    &p = endereço do ponteiro
-    p = endereço que o ponteiro mostra
-    *p = conteudo do p (Se p nao tem conteudo da falha de segmentação)
 
+    &p = endereço do ponteiro
+     p = endereço que o ponteiro mostra
+    *p = conteudo do p (Se p nao tem conteudo da falha de segmentação)
 */
 int main()
 {
