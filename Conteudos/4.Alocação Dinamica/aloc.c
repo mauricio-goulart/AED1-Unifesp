@@ -1,5 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
+/*
+    Memoria Stack = memoria ja alocada estaticamente, porem tem espaço limitado
+    ex: 
+    int n;
+
+    Memoria Heap = memoria alocada dinamicamente, espaço maior
+    ex:
+    int *n = (int *)malloc(sizeof(int));
+
+    free(n);
+
+
+*/
+
 
 int main()
 {
