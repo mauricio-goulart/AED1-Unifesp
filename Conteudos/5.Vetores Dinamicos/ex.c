@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+/*
+    Programa que cria um vetor estatico e um dinamico.
+*/
 
-
-void somar_vetor_com_escalar(int v[], int n, int escalar)
+void somar_vetor_com_escalar(int *v, int n, int escalar)
 {
     for (int c = 0; c < n; c++)
     {
@@ -18,6 +20,13 @@ void print_vetor(int *v, int n)
         printf("&v[%d] = [%p] | v[%d] = [%d]\n", c, &v[c], c, v[c]);
     }
     
+}
+
+void deletar_vetor(int **v)
+{
+    free(*v);
+
+    v = NULL;
 }
 
 int main()
@@ -47,7 +56,6 @@ int main()
 
     print_vetor(v_call, 5);
 
-    free(v_call); 
-
+    deletar_vetor(&v_call);
     return 0;
 }
